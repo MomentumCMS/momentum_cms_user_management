@@ -2,8 +2,30 @@ PATH
   remote: .
   specs:
     momentum_cms_user_management (0.0.1)
+      haml-rails (~> 0.4)
+      momentum_cms
       rails (~> 4.0.0)
+      sass-rails (~> 4.0.3)
+      simple_form (~> 3.1.0.rc1)
       sorcery (~> 0.8.5)
+
+PATH
+  remote: ../momentum_cms
+  specs:
+    momentum_cms (0.0.1)
+      ancestry (~> 2.1.0)
+      awesome_nested_set (~> 3.0.0.rc.3)
+      globalize (~> 4.0.1)
+      globalize-versioning (~> 0.1.0.alpha.1)
+      haml-rails (~> 0.4)
+      jquery-rails (~> 3.1.0)
+      jquery-ui-rails (~> 4.2.1)
+      liquid (~> 2.6.1)
+      paper_trail (~> 3.0.1)
+      paperclip (~> 4.1.1)
+      rails (~> 4.0.0)
+      sass-rails (~> 4.0.3)
+      simple_form (~> 3.1.0.rc1)
 
 GEM
   remote: https://rubygems.org/
@@ -32,18 +54,62 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    ancestry (2.1.0)
+      activerecord (>= 3.0.0)
     arel (4.0.2)
+    awesome_nested_set (3.0.0.rc.5)
+      activerecord (>= 4.0.0, < 5)
+    awesome_print (1.2.0)
     bcrypt (3.1.7)
     bcrypt-ruby (3.1.5)
       bcrypt (>= 3.1.3)
+    better_errors (1.1.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     builder (3.1.4)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.4)
+      climate_control (>= 0.0.3, < 1.0)
+    codeclimate-test-reporter (0.3.0)
+      simplecov (>= 0.7.1, < 1.0.0)
+    coderay (1.1.0)
+    coveralls (0.7.0)
+      multi_json (~> 1.3)
+      rest-client
+      simplecov (>= 0.7)
+      term-ansicolor
+      thor
+    debug_inspector (0.0.2)
+    docile (1.1.3)
     erubis (2.7.0)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    globalize (4.0.1)
+      activemodel (>= 4.0.0, < 5)
+      activerecord (>= 4.0.0, < 5)
+    globalize-versioning (0.1.0.alpha.1)
+      globalize (>= 3, < 5)
+      paper_trail (~> 3.0.0)
+    haml (4.0.5)
+      tilt
+    haml-rails (0.5.3)
+      actionpack (>= 4.0.1)
+      activesupport (>= 4.0.1)
+      haml (>= 3.1, < 5.0)
+      railties (>= 4.0.1)
     hike (1.2.3)
     i18n (0.6.9)
-    jwt (0.1.11)
+    jquery-rails (3.1.0)
+      railties (>= 3.0, < 5.0)
+      thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.2.1)
+      railties (>= 3.2.16)
+    jwt (0.1.13)
       multi_json (>= 1.5)
+    liquid (2.6.1)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -60,8 +126,18 @@ GEM
       multi_json (~> 1.3)
       multi_xml (~> 0.5)
       rack (~> 1.2)
+    paper_trail (3.0.2)
+      activerecord (>= 3.0, < 5.0)
+      activesupport (>= 3.0, < 5.0)
+    paperclip (4.1.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     pg (0.17.1)
     polyglot (0.3.4)
+    quiet_assets (1.0.2)
+      railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -79,11 +155,27 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.3.1)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
+    sass (3.2.19)
+    sass-rails (4.0.3)
+      railties (>= 4.0.0, < 5.0)
+      sass (~> 3.2.0)
+      sprockets (~> 2.8, <= 2.11.0)
+      sprockets-rails (~> 2.0)
+    simple_form (3.1.0.rc1)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
+    simplecov (0.8.2)
+      docile (~> 1.1.0)
+      multi_json
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
     sorcery (0.8.5)
       bcrypt-ruby (>= 3.0)
       oauth (~> 0.4.4)
       oauth2 (>= 0.8.0, < 1.0.0)
-    sprockets (2.12.1)
+    sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
@@ -93,9 +185,12 @@ GEM
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     sqlite3 (1.3.9)
+    term-ansicolor (1.3.0)
+      tins (~> 1.0)
     thor (0.19.1)
     thread_safe (0.3.3)
     tilt (1.4.1)
+    tins (1.3.0)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -105,7 +200,15 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
+  better_errors
+  binding_of_caller
+  codeclimate-test-reporter
+  coveralls
+  momentum_cms!
   momentum_cms_user_management!
   mysql2
   pg
+  quiet_assets
+  simplecov (~> 0.8.2)
   sqlite3

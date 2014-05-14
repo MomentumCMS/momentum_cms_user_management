@@ -1,0 +1,29 @@
+!!!
+%html{:lang => I18n.locale}
+  %head
+    %meta{'http-equiv' => 'Content-type', :content => 'text/html; charset=utf-8'}
+    
+    = stylesheet_link_tag 'momentum_cms/admin/application'
+    = javascript_include_tag 'momentum_cms/admin/application'
+    = csrf_meta_tag
+    
+    = yield :head
+    
+  %body#momentum_cms{:class => "controller-#{params[:controller].to_slug} action-#{params[:action].to_slug} #{params[:controller].to_slug}-#{params[:action].to_slug}"}
+    .navbar.navbar-inverse.navbar-fixed-top{role: "navigation"}
+      .container-fluid
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to 'Momentum CMS', cms_admin_root_path, class: 'navbar-brand'
+    .container-fluid
+      .row
+        .col-sm-12.col-md-12.main
+          - flash.each do |type, message|
+            .alert{:class => "alert-#{type}"}
+              %button.close{:type => 'button', :class => "close", :data => {:dismiss => 'alert'}} &times;
+              = message
+          = yield

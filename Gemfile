@@ -1,6 +1,13 @@
 source "https://rubygems.org"
 
-# Declare your gem's dependencies in momentum_cms_user_management.gemspec.
+# Note: These set of Gems are under heavy development, thus I am referencing 
+# with relative path 
+gem 'momentum_cms', path: '../momentum_cms'
+
+# Optionally: 
+#gem 'momentum_cms', github: 'MomentumCMS/momentum_cms', branch: 'master'
+
+# Declare your gem's dependencies in momentum_cms.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
 gemspec
@@ -12,3 +19,13 @@ gemspec
 
 # To use debugger
 # gem 'debugger'
+
+group :development, :test do
+  gem 'simplecov', '~> 0.8.2', require: false
+  gem 'coveralls', require: false
+  gem 'codeclimate-test-reporter', require: nil
+  gem 'awesome_print'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'quiet_assets'
+end

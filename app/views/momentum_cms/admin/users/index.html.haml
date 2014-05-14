@@ -1,0 +1,19 @@
+%h1.page-header Users
+
+%table.table
+  %thead
+    %tr
+      %th email
+      %th Created At
+      %th Updated At
+      %th Control
+  %tbody
+    - @momentum_cms_users.each do |momentum_cms_user|
+      %tr
+        %td= link_to momentum_cms_user.email, edit_cms_admin_site_user_path(@current_momentum_cms_site, momentum_cms_user)
+        %td= momentum_cms_user.created_at
+        %td= momentum_cms_user.updated_at
+        %td       
+          = link_to 'Destroy', cms_admin_site_user_path(@current_momentum_cms_site, momentum_cms_user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs'
+%br/
+= link_to 'New User', [:new, :cms, :admin, :site, :user], class: 'btn btn-primary btn-xs'

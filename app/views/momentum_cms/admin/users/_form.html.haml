@@ -1,0 +1,5 @@
+= form.input :email
+= form.input :password, as: :password
+= form.input :password_confirmation, as: :password
+= form.submit class: 'btn btn-success btn-xs'
+= link_to 'Back', cms_admin_site_users_path(@current_momentum_cms_site), class: 'btn btn-primary btn-xs'

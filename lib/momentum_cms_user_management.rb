@@ -1,4 +1,5 @@
-require "momentum_cms_user_management/engine"
+require 'momentum_cms_user_management/engine'
+require 'momentum_cms_user_management/authentication/user_management_authentication'
 
 module MomentumCmsUserManagement
 end
