@@ -1,0 +1,28 @@
+language: ruby
+env:
+  - DB=sqlite
+  - DB=mysql
+  - DB=postgresql
+before_script:
+  - mysql -e 'create database momentum_cms_user_management_test'
+  - psql -c 'create database momentum_cms_user_management_test' -U postgres
+  - rake app:momentum_cms_engine:install:migrations
+  - rake db:migrate
+script:
+  - rake test
+rvm:
+  - 1.9.3
+  - 2.0.0
+  - 2.1
+gemfile:
+  - test/gemfiles/Gemfile.rails.4.0
+  - test/gemfiles/Gemfile.rails.4.1
+#  - test/gemfiles/Gemfile.rails.master
+matrix:
+  fast_finish: true
+  allow_failures:
+    - gemfile: test/gemfiles/Gemfile.rails.master
+addons:
+  code_climate:
+    repo_token:
+      secure: "YenOWkrVqZBeipT6l1VIU1Kuov7QX3GAngNcVlTg5CMfyJjKuqaWg2hVW6q/o/ASGIwm57YNUj2pCAkwHwZU7pT3RUnQmpqIVWJo60XVFb7c2y/JkQp+AjmhxunqBSMnDl/JopWn2bhsRwLMOHovCPwO2zSGzLGDI9Re8qaNkwM="

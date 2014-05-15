@@ -1,0 +1,17 @@
+source 'http://rubygems.org'
+
+gem 'rails',                github: 'rails/rails'
+gem 'momentum_cms',         github: 'MomentumCMS/momentum_cms', branch: 'master'
+gem 'sorcery',              '~> 0.8.5'
+gem 'haml-rails',           '~> 0.4'
+gem 'sass-rails',           '~> 4.0.3'
+gem 'simple_form',          '~> 3.1.0.rc1'
+
+gem 'coveralls', require: false
+gem 'codeclimate-test-reporter',  require: nil
+
+group :test do
+  gem 'sqlite3'
+  gem 'mysql2'
+  gem 'pg'
+end
