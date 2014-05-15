@@ -1,9 +1,12 @@
 class MomentumCms::Admin::UsersController < MomentumCms::Admin::UserManagementBaseController
+  skip_before_filter :load_site, only: [:activate]
+  skip_before_filter :require_login, only: [:activate]
+
   before_action :load_moment_cms_user, only: [:edit, :update, :destroy]
   before_action :build_moment_cms_user, only: [:new, :create]
 
   def index
-    @momentum_cms_users = MomentumCms::User.all
+    @momentum_cms_users = MomentumCms::MomentumCms::User.all
   end
 
   def new
@@ -34,15 +37,26 @@ class MomentumCms::Admin::UsersController < MomentumCms::Admin::UserManagementBa
     redirect_to action: :index
   end
 
+  def activate
+    if (@momentum_cms_user = MomentumCms::User.load_from_activation_token(params[:id]))
+      @momentum_cms_user.activate!
+
+      flash[:success] = 'User was successfully activated.'
+      redirect_to cms_admin_login_path
+    else
+      not_authenticated
+    end
+  end
+
   private
   def load_moment_cms_user
-    @momentum_cms_user = MomentumCms::User.find(params[:id])
+    @momentum_cms_user = MomentumCms::MomentumCms::User.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to action: :index
   end
 
   def build_moment_cms_user
-    @momentum_cms_user = MomentumCms::User.new(momentum_cms_user_params)
+    @momentum_cms_user = MomentumCms::MomentumCms::User.new(momentum_cms_user_params)
   end
 
   def momentum_cms_user_params

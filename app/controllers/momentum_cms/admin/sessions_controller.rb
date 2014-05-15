@@ -1,7 +1,9 @@
 class MomentumCms::Admin::SessionsController < MomentumCms::Admin::UserManagementBaseController
-  before_action :redirect_if_logged_in, except: [:destroy]
   skip_before_filter :require_login, only: [:new, :create]
   skip_before_filter :require_login, except: [:destroy]
+  skip_before_filter :load_site
+
+  before_action :redirect_if_logged_in, except: [:destroy]
   before_action :build_moment_cms_user, only: [:new, :create]
 
   def new
@@ -11,16 +13,16 @@ class MomentumCms::Admin::SessionsController < MomentumCms::Admin::UserManagemen
     momentum_cms_user = params.fetch(:momentum_cms_user, nil)
     username = momentum_cms_user.fetch(:email, nil)
     password = momentum_cms_user.fetch(:password, nil)
+    remember_me = momentum_cms_user.fetch(:remember_me, nil)
 
     if username.blank? || password.blank?
       flash[:warning] = 'Login failed'
-
       render action: :new and return
     end
 
-    if @momentum_cms_user = login(username, password)
+    if @momentum_cms_user = login(username, password, remember_me)
       flash[:success] = 'Logged successful!'
-      redirect_back_or_to(cms_admin_root_path)
+      redirect_back_or_to cms_admin_root_path
     else
       flash[:warning] = 'Login failed'
       render action: :new

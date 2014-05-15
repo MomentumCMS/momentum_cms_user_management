@@ -1,0 +1,5 @@
+%h1.page-header Forgot my Password
+
+= simple_form_for @momentum_cms_user, url: cms_admin_password_resets_path, :method => :post do |form|
+  = form.input :email
+  = form.button :submit, 'Reset my password!', class: 'btn btn-xs btn-success'

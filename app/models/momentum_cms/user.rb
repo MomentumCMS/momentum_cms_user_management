@@ -5,6 +5,9 @@ class MomentumCms::User < ActiveRecord::Base
   self.table_name = 'momentum_cms_users'
 
   # == Constants ============================================================
+
+  attr_accessor :remember_me, :token
+
   # == Relationships ========================================================
 
   # == Extensions ===========================================================
@@ -18,7 +21,7 @@ class MomentumCms::User < ActiveRecord::Base
   validates :password_confirmation, presence: true
 
   validates :email, uniqueness: true
-  
+
   # == Scopes ===============================================================
   # == Callbacks ============================================================
   # == Class Methods ========================================================

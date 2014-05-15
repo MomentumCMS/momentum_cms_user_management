@@ -1,0 +1,8 @@
+%h1.page-header Reset my Password
+
+= simple_form_for @momentum_cms_user, url: cms_admin_password_reset_path(@momentum_cms_user), :method => :put do |form|
+  = form.input :token, as: :hidden, input_html: { value: @token }
+  = form.input :email, disabled: true
+  = form.input :password, as: :password
+  = form.input :password_confirmation, as: :password
+  = form.button :submit, 'Reset my password!', class: 'btn btn-xs btn-success'

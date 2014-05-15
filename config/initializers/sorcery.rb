@@ -2,7 +2,12 @@
 # The default is nothing which will include only core features (password encryption, login/logout).
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging, :external
-# Rails.application.config.sorcery.submodules = [:remember_me, :reset_password]
+Rails.application.config.sorcery.submodules = [:reset_password,
+                                               :remember_me,
+                                               :session_timeout,
+                                               :activity_logging,
+                                               :user_activation,
+                                               :brute_force_protection]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
@@ -31,13 +36,13 @@ Rails.application.config.sorcery.configure do |config|
   # How long in seconds to keep the session alive.
   # Default: `3600`
   #
-  # config.session_timeout =
+  config.session_timeout = 3600
 
 
   # Use the last action as the beginning of session timeout.
   # Default: `false`
   #
-  # config.session_timeout_from_last_action =
+  config.session_timeout_from_last_action = true
 
 
   # -- http_basic_auth --
@@ -256,7 +261,7 @@ Rails.application.config.sorcery.configure do |config|
     # your mailer class. Required.
     # Default: `nil`
     #
-    # user.user_activation_mailer =
+    user.user_activation_mailer = MomentumCms::UserMailer
 
 
     # when true sorcery will not automatically
@@ -270,13 +275,13 @@ Rails.application.config.sorcery.configure do |config|
     # activation needed email method on your mailer class.
     # Default: `:activation_needed_email`
     #
-    # user.activation_needed_email_method_name =
+    user.activation_needed_email_method_name = :activation_needed_email
 
 
     # activation success email method on your mailer class.
     # Default: `:activation_success_email`
     #
-    # user.activation_success_email_method_name =
+    user.activation_success_email_method_name = :activation_success_email
 
 
     # do you want to prevent or allow users that did not activate by email to login?
@@ -307,13 +312,13 @@ Rails.application.config.sorcery.configure do |config|
     # mailer class. Needed.
     # Default: `nil`
     #
-    # user.reset_password_mailer =
+    user.reset_password_mailer = MomentumCms::UserMailer
 
 
     # reset password email method on your mailer class.
     # Default: `:reset_password_email`
     #
-    # user.reset_password_email_method_name =
+    user.reset_password_email_method_name = :reset_password_email
 
 
     # when true sorcery will not automatically
