@@ -20,7 +20,9 @@ class MomentumCms::User < ActiveRecord::Base
   validates :password, confirmation: true
   validates :password_confirmation, presence: true
 
+  validates :email, presence: true
   validates :email, uniqueness: true
+
 
   # == Scopes ===============================================================
   # == Callbacks ============================================================

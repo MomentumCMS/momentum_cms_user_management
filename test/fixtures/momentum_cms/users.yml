@@ -1,4 +1,5 @@
 default:
-  email: default@example.com
-  salt: <%= salt = "asdasdastr4325234324sdfds" %>
-  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("secret", salt) %>
+  email: basic@example.test
+  salt: <%= salt = "4vh3uTVoY7zwxjwEPb" %>
+  crypted_password: <%= Sorcery::CryptoProviders::BCrypt.encrypt("NaU4T28ixczHwiEYqV", salt) %>
+  activation_state: active

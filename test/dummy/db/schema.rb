@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140515012722) do
+ActiveRecord::Schema.define(version: 20140516223771) do
 
   create_table "momentum_cms_block_translations", force: true do |t|
     t.integer  "momentum_cms_block_id", null: false
@@ -124,21 +124,13 @@ ActiveRecord::Schema.define(version: 20140515012722) do
   add_index "momentum_cms_pages", ["site_id"], name: "index_momentum_cms_pages_on_site_id"
   add_index "momentum_cms_pages", ["template_id"], name: "index_momentum_cms_pages_on_template_id"
 
-  create_table "momentum_cms_settings", force: true do |t|
-    t.string   "var",         null: false
-    t.text     "value"
-    t.integer  "target_id",   null: false
-    t.string   "target_type", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "momentum_cms_settings", ["target_type", "target_id", "var"], name: "momentum_cms_settings_uniq_ttype_tid_var", unique: true
-
   create_table "momentum_cms_sites", force: true do |t|
     t.string   "identifier"
     t.string   "label"
     t.string   "host"
+    t.string   "setting_title"
+    t.text     "setting_locales"
+    t.text     "setting_default_locale"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -179,9 +171,9 @@ ActiveRecord::Schema.define(version: 20140515012722) do
   add_index "momentum_cms_templates", ["site_id"], name: "index_momentum_cms_templates_on_site_id"
 
   create_table "momentum_cms_users", force: true do |t|
-    t.string   "email",                           null: false
-    t.string   "crypted_password",                null: false
-    t.string   "salt",                            null: false
+    t.string   "email",                                       null: false
+    t.string   "crypted_password",                            null: false
+    t.string   "salt",                                        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "remember_me_token"
@@ -196,6 +188,9 @@ ActiveRecord::Schema.define(version: 20140515012722) do
     t.string   "activation_state"
     t.string   "activation_token"
     t.datetime "activation_token_expires_at"
+    t.integer  "failed_logins_count",             default: 0
+    t.datetime "lock_expires_at"
+    t.string   "unlock_token"
   end
 
   add_index "momentum_cms_users", ["activation_token"], name: "index_momentum_cms_users_on_activation_token"

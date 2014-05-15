@@ -11,9 +11,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
 ]
 CodeClimate::TestReporter.start
 
-SimpleCov.start 'rails' do
-  add_group 'Tags', 'lib/momentum_cms/tags'
-end
+SimpleCov.start 'rails'
 
 require File.expand_path('../dummy/config/environment.rb', __FILE__)
 require 'rails/test_help'
@@ -26,8 +24,13 @@ Dir['#{File.dirname(__FILE__)}/support/**/*.rb'].each { |f| require f }
 # Load fixtures from the engine
 ActiveSupport::TestCase.fixture_path = File.expand_path('../fixtures', __FILE__)
 
+class ActionController::TestCase
+  fixtures :all
+  include Sorcery::TestHelpers::Rails
+end
 
 class ActiveSupport::TestCase
   fixtures :all
   include ActionDispatch::TestProcess
+  include Sorcery::TestHelpers::Rails
 end

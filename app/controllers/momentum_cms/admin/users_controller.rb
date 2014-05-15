@@ -6,7 +6,7 @@ class MomentumCms::Admin::UsersController < MomentumCms::Admin::UserManagementBa
   before_action :build_moment_cms_user, only: [:new, :create]
 
   def index
-    @momentum_cms_users = MomentumCms::MomentumCms::User.all
+    @momentum_cms_users = MomentumCms::User.all
   end
 
   def new
@@ -50,13 +50,13 @@ class MomentumCms::Admin::UsersController < MomentumCms::Admin::UserManagementBa
 
   private
   def load_moment_cms_user
-    @momentum_cms_user = MomentumCms::MomentumCms::User.find(params[:id])
+    @momentum_cms_user = MomentumCms::User.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to action: :index
   end
 
   def build_moment_cms_user
-    @momentum_cms_user = MomentumCms::MomentumCms::User.new(momentum_cms_user_params)
+    @momentum_cms_user = MomentumCms::User.new(momentum_cms_user_params)
   end
 
   def momentum_cms_user_params

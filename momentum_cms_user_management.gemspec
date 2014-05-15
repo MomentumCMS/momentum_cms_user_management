@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'pg'
 
   s.add_dependency 'momentum_cms'
-  s.add_dependency 'rails',                    '~> 4.0.0'
+  s.add_dependency 'rails',                    '>= 4.0.0'
   s.add_dependency 'haml-rails',               '~> 0.4'
   s.add_dependency 'sass-rails',               '~> 4.0.3'
   s.add_dependency 'sorcery',                  '~> 0.8.5'

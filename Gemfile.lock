@@ -4,7 +4,7 @@ PATH
     momentum_cms_user_management (0.0.1)
       haml-rails (~> 0.4)
       momentum_cms
-      rails (~> 4.0.0)
+      rails (>= 4.0.0)
       sass-rails (~> 4.0.3)
       simple_form (~> 3.1.0.rc1)
       sorcery (~> 0.8.5)

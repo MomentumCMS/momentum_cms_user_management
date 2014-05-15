@@ -2,10 +2,10 @@ source "https://rubygems.org"
 
 # Note: These set of Gems are under heavy development, thus I am referencing 
 # with relative path 
-gem 'momentum_cms', path: '../momentum_cms'
+# gem 'momentum_cms', path: '../momentum_cms'
 
 # Optionally: 
-#gem 'momentum_cms', github: 'MomentumCMS/momentum_cms', branch: 'master'
+gem 'momentum_cms', github: 'MomentumCMS/momentum_cms', branch: 'master'
 
 # Declare your gem's dependencies in momentum_cms.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
