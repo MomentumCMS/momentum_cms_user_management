@@ -23,7 +23,7 @@ PATH
       liquid (~> 2.6.1)
       paper_trail (~> 3.0.1)
       paperclip (~> 4.1.1)
-      rails (~> 4.0.0)
+      rails (>= 4.0.0)
       sass-rails (~> 4.0.3)
       simple_form (~> 3.1.0.rc1)
 
