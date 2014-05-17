@@ -1,6 +1,6 @@
 class MomentumCms::Admin::PasswordResetsController < MomentumCms::Admin::UserManagementBaseController
   skip_before_filter :require_login
-  
+
   before_action :build_moment_cms_user, only: [:new, :create]
 
   def new
@@ -33,8 +33,9 @@ class MomentumCms::Admin::PasswordResetsController < MomentumCms::Admin::UserMan
 
   # This action fires when the user has sent the reset password form.
   def update
-    @token = params[:token]
-    @momentum_cms_user = MomentumCms::User.load_from_reset_password_token(params[:momentum_cms_user][:token])
+    @token = params.fetch(:momentum_cms_user, {}).fetch(:token, nil)
+
+    @momentum_cms_user = MomentumCms::User.load_from_reset_password_token(@token)
 
     if @momentum_cms_user.blank?
       not_authenticated
@@ -42,9 +43,9 @@ class MomentumCms::Admin::PasswordResetsController < MomentumCms::Admin::UserMan
     end
 
     # the next line makes the password confirmation validation work
-    @momentum_cms_user.password_confirmation = params[:momentum_cms_user][:password_confirmation]
+    @momentum_cms_user.password_confirmation = params.fetch(:momentum_cms_user, {}).fetch(:password_confirmation, nil)
     # the next line clears the temporary token and updates the password
-    if @momentum_cms_user.change_password!(params[:momentum_cms_user][:password])
+    if @momentum_cms_user.change_password!(params.fetch(:momentum_cms_user, {}).fetch(:password, nil))
       flash[:success] = 'Password was successfully updated.'
       redirect_to cms_admin_root_path
     else

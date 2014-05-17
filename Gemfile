@@ -1,11 +1,12 @@
 source "https://rubygems.org"
 
-# Note: These set of Gems are under heavy development, thus I am referencing 
-# with relative path 
-# gem 'momentum_cms', path: '../momentum_cms'
+local_gemfile = File.dirname(__FILE__) + "/Gemfile.local.rb"
+if File.file?(local_gemfile)
+  self.instance_eval(Bundler.read_file(local_gemfile))
+else
+  gem 'momentum_cms', github: 'MomentumCMS/momentum_cms', branch: 'master'
+end
 
-# Optionally: 
-gem 'momentum_cms', github: 'MomentumCMS/momentum_cms', branch: 'master'
 
 # Declare your gem's dependencies in momentum_cms.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
