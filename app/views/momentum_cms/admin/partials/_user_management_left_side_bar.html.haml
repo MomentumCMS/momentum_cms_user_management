@@ -1,0 +1,12 @@
+- if @current_momentum_cms_site
+  %p 
+    %strong
+      User Management
+  %ul.nav.nav-sidebar
+    %li= link_to 'Users', [:cms, :admin, :site, :users]
+
+  %p 
+    %strong
+      Session
+  %ul.nav.nav-sidebar
+    %li= link_to 'Logout', [:cms, :admin, :logout]

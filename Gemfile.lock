@@ -1,7 +1,16 @@
-GIT
-  remote: git://github.com/MomentumCMS/momentum_cms.git
-  revision: 1ad8925477f69cd0c9b2a07215df6b9d4e835189
-  branch: master
+PATH
+  remote: .
+  specs:
+    momentum_cms_user_management (0.0.1)
+      haml-rails (~> 0.4)
+      momentum_cms
+      rails (>= 4.0.0)
+      sass-rails (~> 4.0.3)
+      simple_form (~> 3.1.0.rc1)
+      sorcery (~> 0.8.5)
+
+PATH
+  remote: ../momentum_cms
   specs:
     momentum_cms (0.0.1)
       ancestry (~> 2.1.0)
@@ -15,19 +24,9 @@ GIT
       paper_trail (~> 3.0.1)
       paperclip (~> 4.1.1)
       rails (>= 4.0.0)
+      rails-i18n (~> 4.0.0)
       sass-rails (~> 4.0.3)
       simple_form (~> 3.1.0.rc1)
-
-PATH
-  remote: .
-  specs:
-    momentum_cms_user_management (0.0.1)
-      haml-rails (~> 0.4)
-      momentum_cms
-      rails (>= 4.0.0)
-      sass-rails (~> 4.0.3)
-      simple_form (~> 3.1.0.rc1)
-      sorcery (~> 0.8.5)
 
 GEM
   remote: https://rubygems.org/
@@ -120,7 +119,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.25.1)
     minitest (5.3.4)
-    multi_json (1.10.0)
+    multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mysql2 (0.3.16)
@@ -156,6 +155,9 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.1)
       sprockets-rails (~> 2.0)
+    rails-i18n (4.0.2)
+      i18n (~> 0.6)
+      rails (>= 4.0)
     railties (4.1.1)
       actionpack (= 4.1.1)
       activesupport (= 4.1.1)

@@ -1,6 +1,6 @@
 class MomentumCms::Admin::UserManagementBaseController < MomentumCms::Admin::BaseController
   layout :set_layout
-  
+
   protected
   def set_layout
     if logged_in?
