@@ -1,5 +1,6 @@
 class MomentumCms::UserMailer < ActionMailer::Base
-
+  default from: 'development@momentum-cms.io'
+  
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
