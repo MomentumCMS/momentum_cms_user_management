@@ -1,7 +1,8 @@
 class MomentumCms::User < ActiveRecord::Base
 
   # == MomentumCms ==========================================================
-
+  include MomentumCms::ActAsUser
+  
   self.table_name = 'momentum_cms_users'
 
   # == Constants ============================================================
